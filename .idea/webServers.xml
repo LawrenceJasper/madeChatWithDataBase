@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c32bb574-c7ec-4504-a153-0048bffb7e89" name="madeChat">
+        <fileTransfer rootFolder="/home/pi/chatRoom" accessType="SFTP" host="10.10.20.157" port="22" sshConfigId="cd0c7d28-5615-4327-aa30-6cbae50b278f" sshConfig="pi@10.10.20.157:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

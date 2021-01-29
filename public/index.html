@@ -1,0 +1,89 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script   src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script   src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script   src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+    <script   src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+    <script src="dataBase.js"></script>
+<!--    <script type = module src="dataBase.js"></script>-->
+    <title>Sign In</title>
+    <style>
+
+        body              { background-color: black;}
+        #mainBox          { position: absolute; top: 250px; background-color: #000000; height: 400px; width: 800px; left: 50%; margin-left: -400px; border-radius: 5px; border: white 1px solid}
+        input             { position: absolute;height: 35px; width: 250px; border-radius: 5px}
+        #eMail           { top: 100px; left: 50%; margin-left: -125px;}
+        #passWord       { top: 150px; left: 50%; margin-left: -125px;}
+        #un               { top: 100px; left: 20%; }
+        #pw               { top: 150px; left: 20%; }
+        h1                { position: absolute; color: white; font-family: 'Nunito', sans-serif; font-weight: bold; font-size: 20px}
+        #signUp           { position: absolute; bottom: 1%; right: 1%}
+        a                 { text-decoration: none; color: white; font-family: 'Nunito', sans-serif}
+        .btn              { width: 100px; height: 40px; cursor: pointer; font-family: 'Nunito', sans-serif; color: white; font-weight: bold; background-color: black; border-radius: 5px; border: 1px solid white;}
+        #signIn           { position: absolute; top: 300px; left: 50%; margin-left: -50px;}
+        #logoPic          { position: absolute; left: 50%; margin-left: -200px; height: auto; width: 400px;}
+        #redirect         { display: none;}
+    </style>
+</head>
+<body>
+<img id = logoPic src="logo.png">
+<div class = box id = mainBox>
+
+    <input id = eMail type="text" placeholder="Email" >
+
+    <input id = passWord type="password" placeholder="Password">
+    <button class = btn id = signIn>Sign In</button>
+    <button id = signOut>Sign Out</button>
+    <div id = signUp><a href="signUp.html">Sign Up</a></div>
+    <a id = redirect href="chatPage.html">boop</a>
+
+</div>
+
+
+
+<script>
+
+    document.getElementById('signIn').onclick = function(){
+        signIn();
+    }
+
+    document.getElementById('signOut').onclick = function(){
+        signOut();
+    }
+
+</script>
+<script>
+    let msg
+    let webSocket = io.connect(location.host)
+    webSocket.on('connect', function(data) {
+        webSocket.emit('js', JSON.stringify({type: 'indexHTML'}))
+
+    })
+
+    webSocket.on('js', function(data) {
+        try {
+            msg = JSON.parse(data);
+
+            switch (msg.type) {
+
+                case 'bb':
+                        console.log('hey')
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (ex) {
+
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Made Chat</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script  src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+
+
+</head>
+<style>
+    #redirect2 {display: none}
+</style>
+<body>
+
+<div id = title><img src="logo.png"></div>
+<div id="mario-chat">
+    <div id="chat-window">
+        <div id="recent"></div>
+        <div id="output"></div>
+        <div id="feedback"></div>
+    </div>
+<!--    <input type="text" id="handle" placeholder="Handle">-->
+    <input type="text" id="message" placeholder="Message">
+    <button id="send">Send</button>
+</div>
+<a id = redirect2 href="index.html">boop</a>
+<button id = signOut2>sign out</button>
+
+
+
+<script>
+    let msg
+    let webSocket = io.connect(location.host)
+    webSocket.on('connect', function(data) {
+        webSocket.emit('js', JSON.stringify({type: 'chatPageHTML', data: email}))
+
+    })
+
+    webSocket.on('js', function(data) {
+        try {
+            msg = JSON.parse(data);
+
+            switch (msg.type) {
+
+                case 'bb':
+                    console.log('hey')
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (ex) {
+
+        }
+    })
+
+
+
+
+    document.getElementById('signOut2').onclick = function(){
+        signOut();
+    }
+</script>
+
+</body>
+<script type="text/javascript"  src="dataBase.js"></script>
+<script type="text/javascript" src="chat.js"></script>
+</html>
+
+
+
